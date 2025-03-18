@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>クイズ結果発表</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #4facfe, #00f2fe);
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 60px;
+    }
+    p {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="team-name">チーム名</h1>
+  <p id="score">得点: 0点</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const team = params.get('team');
+    const score = params.get('score');
+    if (team && score) {
+      document.getElementById("team-name").innerText = `${team} チーム`;
+      document.getElementById("score").innerText = `得点: ${score}点`;
+    } else {
+      document.getElementById("team-name").innerText = "データが見つかりません";
+      document.getElementById("score").innerText = "再度確認してください";
+    }
+  </script>
+</body>
+</html>
