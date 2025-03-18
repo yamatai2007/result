@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+#result-container {
+    margin-top: 20vh;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
