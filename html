@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>チーム別結果発表</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="result-container">
+        <h1 id="team-name">チーム名を読み込み中...</h1>
+        <h2 id="score">得点を取得中...</h2>
+        <p>お疲れ様でした！</p>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamName = urlParams.get('team');
+        document.getElementById('team-name').textContent = `${teamName} の結果`;
+
+        fetch("https://sheets.googleapis.com/v4/spreadsheets/スプレッドシートID/values/シート名!A:Z?key=APIキー")
+            .then(response => response.json())
+            .then(data => {
+                const rows = data.values;
+                const teamRow = rows.find(row => row[1] === teamName);  // 1列目にチーム名が入ってる想定
+                if (teamRow) {
+                    document.getElementById('score').textContent = `得点: ${teamRow[12]} 点`;  // 12列目に得点
+                } else {
+                    document.getElementById('score').textContent = "結果が見つかりませんでした";
+                }
+            })
+            .catch(error => console.error("データ取得失敗:", error));
+    </script>
+</body>
+</html>
